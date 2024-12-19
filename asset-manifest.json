@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/cto_pacific/static/css/main.220a748d.css",
+    "main.js": "/cto_pacific/static/js/main.53d6502c.js",
+    "index.html": "/cto_pacific/index.html",
+    "static/media/MsftColor.svg": "/cto_pacific/static/media/MsftColor.02b2f4f8f484a108d2cc6d622608baf5.svg",
+    "main.220a748d.css.map": "/cto_pacific/static/css/main.220a748d.css.map",
+    "main.53d6502c.js.map": "/cto_pacific/static/js/main.53d6502c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.220a748d.css",
+    "static/js/main.53d6502c.js"
+  ]
+}
