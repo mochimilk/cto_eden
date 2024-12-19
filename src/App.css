@@ -1,0 +1,73 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 64px);
+    background-color: var(--colorNeutralBackground3);
+  }
+  
+  .toggle-button {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    z-index: 1000;
+    cursor: pointer;
+  }
+  
+  .layout {
+    display: flex;
+    height: 100%;
+
+  }
+  
+  .panelLeft {
+    background-color: var(--colorNeutralBackground4);
+    min-width: 325px;
+    max-width: 450px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .resize-handle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3px;
+    height: 100%;
+    cursor: ew-resize;
+    background-color: transparent;
+  }
+
+  .resize-handle:hover{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3px;
+    height: 100%;
+    cursor: ew-resize;
+    background-color: var(--colorNeutralStroke1);
+  }
+
+  .resize-handle:active{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3px;
+    height: 100%;
+    cursor: ew-resize;
+    background-color: var(--colorNeutralStroke1);
+  }
+  
+  .content {
+    transition: flex 0.3s ease, width 0.3s ease;
+    flex-grow: 1;
+    padding: 16px;
+    overflow: auto;
+  }
+  
+  .panel-right {
+    width: 200px; /* Example width for the right panel */
+    background-color: #e8e8e8;
+  }
+  
