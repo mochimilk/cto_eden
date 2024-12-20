@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/cto_eden/static/css/main.87decc75.css",
-    "main.js": "/cto_eden/static/js/main.5baea305.js",
+    "main.css": "/cto_eden/static/css/main.d618c118.css",
+    "main.js": "/cto_eden/static/js/main.0a145105.js",
     "index.html": "/cto_eden/index.html",
     "static/media/MsftColor.svg": "/cto_eden/static/media/MsftColor.02b2f4f8f484a108d2cc6d622608baf5.svg",
-    "main.87decc75.css.map": "/cto_eden/static/css/main.87decc75.css.map",
-    "main.5baea305.js.map": "/cto_eden/static/js/main.5baea305.js.map"
+    "main.d618c118.css.map": "/cto_eden/static/css/main.d618c118.css.map",
+    "main.0a145105.js.map": "/cto_eden/static/js/main.0a145105.js.map"
   },
   "entrypoints": [
-    "static/css/main.87decc75.css",
-    "static/js/main.5baea305.js"
+    "static/css/main.d618c118.css",
+    "static/js/main.0a145105.js"
   ]
 }
