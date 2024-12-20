@@ -1,7 +1,6 @@
 {
   "name": "cto_eden",
   "homepage": "https://mochimilk.github.io/cto_eden",
-
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,14 +8,16 @@
     "cra-template-typescript": "1.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-markdown": "^9.0.1",
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-      "predeploy": "npm run build",
-  "deploy": "gh-pages -d build",
-    "test": "react-scripts test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+ 
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,10 +40,13 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "customize-cra": "^1.0.0",
     "eslint": "^8.57.1",
     "eslint-plugin-react": "^7.37.2",
     "gh-pages": "^6.2.0",
     "globals": "^15.14.0",
+    "raw-loader": "^4.0.2",
+    "react-app-rewired": "^2.2.1",
     "typescript-eslint": "^8.18.1"
   }
 }

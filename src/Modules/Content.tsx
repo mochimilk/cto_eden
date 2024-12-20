@@ -1,15 +1,15 @@
-
 import * as React from "react";
-
+import ReactMarkdown from 'react-markdown';
+import content from '../Posts/GettingStarted.md';
 
 
 
 const Content: React.FC = () => {
   return (
-<div>
-    <h1>Hello</h1>
-</div>
-  );
+    <div className="content">
+            {/* <ReactMarkdown>{content}</ReactMarkdown>; */}
+    </div>
+  )
 };
 
 export default Content;

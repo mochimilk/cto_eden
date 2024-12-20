@@ -1,7 +1,10 @@
 import * as React from "react";
 import Content from './Modules/Content.tsx';
 import PanelRight from './Modules/PanelRight.tsx';
-import { Button } from '@fluentui/react-components';
+import {  
+  Tooltip, 
+  Button 
+} from '@fluentui/react-components';
 import {
   PanelLeftContractFilled,
   PanelLeftContractRegular,
@@ -16,9 +19,12 @@ const PanelLeftContract = bundleIcon(PanelLeftContractFilled, PanelLeftContractR
 const PanelLeftExpand = bundleIcon(PanelLeftExpandFilled, PanelLeftExpandRegular);
 
 const App: React.FC = () => {
-  const [panelWidth, setPanelWidth] = React.useState(325); // Default width
+  const [panelWidth, setPanelWidth] = React.useState(260); // Default width
   const [isPanelOpen, setIsPanelOpen] = React.useState(true);
   const [isResizing, setIsResizing] = React.useState(false);
+
+  // Helper function to detect the platform
+  const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
 
   const togglePanel = () => {
     setIsPanelOpen(!isPanelOpen);
@@ -31,7 +37,7 @@ const App: React.FC = () => {
 
   const handleMouseMove = (e: MouseEvent) => {
     if (isResizing) {
-      const newWidth = Math.min(Math.max(e.clientX, 325), 450);
+      const newWidth = Math.min(Math.max(e.clientX, 260), 450);
       setPanelWidth(newWidth);
     }
   };
@@ -55,15 +61,34 @@ const App: React.FC = () => {
     };
   }, [isResizing]);
 
+  // Update the tooltip dynamically based on the OS
+  const tooltipText = `${isMac ? 'Cmd' : 'Ctrl'} + Shift + <`;
+
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const isModifierPressed = isMac ? event.metaKey : event.ctrlKey;
+      if (isModifierPressed && event.shiftKey && event.key === ',') {
+        event.preventDefault(); // Prevent default browser behavior
+        togglePanel();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMac, togglePanel]);
+
   return (
     <div className="app-container">
-      <Button
-        className="toggle-button"
-        onClick={togglePanel}
-        icon={isPanelOpen ? <PanelLeftContract /> : <PanelLeftExpand />}
-        appearance="subtle"
-      >
-      </Button>
+      <Tooltip content={tooltipText} relationship="label">
+        <Button
+          className="toggle-button"
+          onClick={togglePanel}
+          icon={isPanelOpen ? <PanelLeftContract /> : <PanelLeftExpand />}
+        >
+        </Button>
+      </Tooltip>
       <div className="layout">
         {isPanelOpen && (
           <div

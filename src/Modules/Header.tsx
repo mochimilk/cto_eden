@@ -1,5 +1,6 @@
 import React, { useEffect, useCallback, useState } from "react";
 import {
+  Button,
   Subtitle2,
   Avatar,
   Menu,
@@ -90,7 +91,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
           <span style={{ fontWeight: 300 }}> | CTO Eden</span>
         </Subtitle2>
         <Tag disabled size="extra-small" style={{ marginTop: 4 }}>
-          v2.0.2
+          ALPHA
         </Tag>
       </div>
       <div className="headerNav">
@@ -107,6 +108,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
         </TabList>
       </div>
       <div className="headerTools">
+ 
         <Menu hasIcons positioning={{ autoSize: true }}>
           <MenuTrigger disableButtonEnhancement>
             <Avatar
@@ -134,6 +136,9 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
             </MenuList>
           </MenuPopover>
         </Menu>
+        <Button
+        appearance="primary"
+        >Hello</Button>
       </div>
     </header>
   );
