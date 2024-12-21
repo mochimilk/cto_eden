@@ -8,6 +8,7 @@
 .layout {
   display: flex;
   height: 100%;
+  width: 100%;
 }
 
 .panelLeftToggle {
@@ -42,7 +43,8 @@
   overflow: hidden;
 }
 
-.resize-handle-left, .resize-handle-right {
+.resize-handle-left,
+.resize-handle-right {
   position: absolute;
   top: 0;
   width: 3px;
@@ -56,9 +58,8 @@
 }
 
 .resize-handle-right {
-
   left: 0;
-z-index: 1;
+  z-index: 1;
 }
 
 .resize-handle-left:hover,
@@ -75,18 +76,42 @@ z-index: 1;
   background-color: var(--colorNeutralStroke1);
 }
 
-.content {
-  margin: auto;
-  overflow: scroll;
-  height: 100%;
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: start;
   box-sizing: border-box;
-  padding: 16px;
 }
 
-.panelLeftHeader {
+.content {
+display: flex;
+flex: 1 1 auto;
+  overflow: scroll;
+  box-sizing: border-box;
+  padding: 0 16px 16px 16px;
+}
+
+.panelHeader {
   display: flex;
+  width: 100%;
   align-items: center;
   padding: 0 16px;
   min-height: 64px;
   justify-content: space-between;
+  box-sizing: border-box;
+
+ backdrop-filter: saturate(180%) blur(16px);
+ transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+}
+
+.headerTitleGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }

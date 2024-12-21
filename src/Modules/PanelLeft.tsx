@@ -1,8 +1,8 @@
 
 import * as React from "react";
 import {
+  Body1Strong,
   Button,
-  Label,
 } from "@fluentui/react-components";
 import {
   MoreHorizontalRegular
@@ -14,10 +14,10 @@ import {
 const PanelLeft: React.FC = () => {
   return (
     <div className="panelLeft">
-      <div className="panelLeftHeader">
-      <Label
+      <div className="panelHeader">
+      <Body1Strong
       style={{ color: 'var(--colorNeutralForeground2)' }}
-      >Resources</Label>
+      >Panel</Body1Strong>
       <Button
       icon={<MoreHorizontalRegular/>}
       appearance="subtle"

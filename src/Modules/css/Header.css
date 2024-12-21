@@ -1,40 +1,41 @@
 header {
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    justify-content: space-between;
-    background-color: var(--colorNeutralBackgroundAlpha);
-max-height: 64px;
-box-sizing: border-box;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+  background-color: var(--colorNeutralBackgroundAlpha);
+  max-height: 64px;
+  box-sizing: border-box;
 }
 
 .headerTitle {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  flex-basis: auto;
+  align-items: center;
+  gap: 8px;
 }
 
-.headerNav{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: -2px;
+.headerNav {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: -2px;
 }
 
 .headerTools {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex: 1 1 0px;
-    flex-direction: row-reverse;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-direction: row-reverse;
 }
 
 .clickable-avatar {
-    cursor: pointer;
-    transition: box-shadow 0.2s ease-in-out; /* Smooth transition for the shadow */
-  }
-  
-  .clickable-avatar:hover {
-    box-shadow: 0 0 0 2px var(--colorNeutralStrokeAlpha2); /* Outer border effect without resizing */
-  }
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out; /* Smooth transition for the shadow */
+}
+
+.clickable-avatar:hover {
+  box-shadow: 0 0 0 2px var(--colorNeutralStrokeAlpha2); /* Outer border effect without resizing */
+}

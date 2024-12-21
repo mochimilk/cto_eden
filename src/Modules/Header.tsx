@@ -12,7 +12,7 @@ import {
   MenuGroup,
   Tag,
   Tab,
-  TabList
+  TabList,
 } from "@fluentui/react-components";
 import {
   ArrowExitRegular,
@@ -31,7 +31,8 @@ import {
   WeatherSunnyRegular,
   WeatherMoonFilled,
   WeatherMoonRegular,
-  bundleIcon
+  bundleIcon,
+  ShareRegular
 } from "@fluentui/react-icons";
 import "./css/Header.css";
 import MsftLogo from "../Imports/MsftColor.svg";
@@ -79,19 +80,19 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
     <header>
       <div className="headerTitle">
         <Avatar
-          color="transparent"
+          color="" //invisible
           image={{
             src: MsftLogo,
           }}
           shape="square"
           aria-label="App"
         />
-        <Subtitle2>
+        <Subtitle2 style={{ whiteSpace: "nowrap"}}>
           Microsoft
-          <span style={{ fontWeight: 300 }}> | CTO Eden</span>
+          <span style={{ fontWeight: 400}}> | CTO Eden</span>
         </Subtitle2>
-        <Tag disabled size="extra-small" style={{ marginTop: 4 }}>
-          ALPHA
+        <Tag size="small" style={{ marginTop: 4 }}>
+          v.1.0.3
         </Tag>
       </div>
       <div className="headerNav">
@@ -112,6 +113,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
         <Menu hasIcons positioning={{ autoSize: true }}>
           <MenuTrigger disableButtonEnhancement>
             <Avatar
+            color="colorful"
               name="Pepper Hayuki"
               aria-label="App"
               badge={{ status: "out-of-office", outOfOffice: true }}
@@ -136,9 +138,9 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
             </MenuList>
           </MenuPopover>
         </Menu>
-        <Button
-        appearance="primary"
-        >Hello</Button>
+        <Button icon={<ShareRegular />}
+        appearance="subtle"
+        ></Button>
       </div>
     </header>
   );

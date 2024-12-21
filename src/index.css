@@ -2,8 +2,9 @@
   --app-background-color: var(--colorNeutralBackground1); /* Reference Fluent token */
 }
 
+html, body { margin: 0; }
+
 body {
   background-color: var(--app-background-color); /* Apply custom variable */
-  margin: 0;
   transition: background-color 0.3s ease; /* Optional smooth transition */
 }
