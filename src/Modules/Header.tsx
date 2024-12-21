@@ -32,7 +32,7 @@ import {
   WeatherMoonFilled,
   WeatherMoonRegular,
   bundleIcon,
-  ShareRegular
+  ShareRegular,
 } from "@fluentui/react-icons";
 import "./css/Header.css";
 import MsftLogo from "../Imports/MsftColor.svg";
@@ -68,7 +68,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
   useEffect(() => {
     // Set shortcut label based on the platform
     const isMac = navigator.platform.toLowerCase().includes("mac");
-    setShortcutLabel(isMac ? "Cmd+D" : "Ctrl+D");
+    setShortcutLabel(isMac ? "⌘+D" : "Ctrl+D");
 
     window.addEventListener("keydown", handleKeyPress);
     return () => {
@@ -80,19 +80,19 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
     <header>
       <div className="headerTitle">
         <Avatar
-          color="" //invisible
+
           image={{
             src: MsftLogo,
           }}
           shape="square"
           aria-label="App"
         />
-        <Subtitle2 style={{ whiteSpace: "nowrap"}}>
+        <Subtitle2 style={{ whiteSpace: "nowrap" }}>
           Microsoft
-          <span style={{ fontWeight: 400}}> | CTO Eden</span>
+          <span style={{ fontWeight: 400 }}> | CTO Eden</span>
         </Subtitle2>
         <Tag size="small" style={{ marginTop: 4 }}>
-          v.1.0.3
+          v.1.0.5
         </Tag>
       </div>
       <div className="headerNav">
@@ -109,11 +109,10 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
         </TabList>
       </div>
       <div className="headerTools">
- 
         <Menu hasIcons positioning={{ autoSize: true }}>
           <MenuTrigger disableButtonEnhancement>
             <Avatar
-            color="colorful"
+              color="colorful"
               name="Pepper Hayuki"
               aria-label="App"
               badge={{ status: "out-of-office", outOfOffice: true }}
@@ -125,7 +124,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
               <MenuGroup>
                 <MenuItem icon={<Person />}>Account</MenuItem>
                 <MenuItem
-              icon={isDarkMode ? <WeatherSunny /> : <WeatherMoon />}
+                  icon={isDarkMode ? <WeatherSunny /> : <WeatherMoon />}
                   onClick={toggleTheme}
                   secondaryContent={shortcutLabel}
                 >
@@ -138,9 +137,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
             </MenuList>
           </MenuPopover>
         </Menu>
-        <Button icon={<ShareRegular />}
-        appearance="subtle"
-        ></Button>
+        <Button icon={<ShareRegular />} appearance="subtle"></Button>
       </div>
     </header>
   );

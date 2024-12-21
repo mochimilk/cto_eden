@@ -30,14 +30,28 @@ import {
   CubeRegular,
   BranchRegular,
 } from "@fluentui/react-icons";
+import ReactMarkdown from "react-markdown";
+import markdownFile from "../Posts/GettingStarted.md";
 
 // Bundle icons for panelLeft
-const PanelLeftContract = bundleIcon(PanelLeftContractFilled, PanelLeftContractRegular);
-const PanelLeftExpand = bundleIcon(PanelLeftExpandFilled, PanelLeftExpandRegular);
+const PanelLeftContract = bundleIcon(
+  PanelLeftContractFilled,
+  PanelLeftContractRegular
+);
+const PanelLeftExpand = bundleIcon(
+  PanelLeftExpandFilled,
+  PanelLeftExpandRegular
+);
 
 // Bundle icons for panelRight
-const PanelRightContract = bundleIcon(PanelRightContractFilled, PanelRightContractRegular);
-const PanelRightExpand = bundleIcon(PanelRightExpandFilled, PanelRightExpandRegular);
+const PanelRightContract = bundleIcon(
+  PanelRightContractFilled,
+  PanelRightContractRegular
+);
+const PanelRightExpand = bundleIcon(
+  PanelRightExpandFilled,
+  PanelRightExpandRegular
+);
 
 // Bundle icons for Search
 const Search = bundleIcon(SearchFilled, SearchRegular);
@@ -87,12 +101,17 @@ const Content: React.FC<ContentProps> = ({
               appearance="subtle"
             />
           </Tooltip>
-          <Body1Strong style={{ color: "var(--colorNeutralForeground2)" }}>Content</Body1Strong>
+          <Body1Strong style={{ color: "var(--colorNeutralForeground2)" }}>
+            Content
+          </Body1Strong>
         </div>
 
         <Toolbar style={{ width: "100%" }}>
           <ToolbarDivider />
-          <ToolbarButton aria-label="Increase Font Size" icon={<BranchRequestRegular />} />
+          <ToolbarButton
+            aria-label="Increase Font Size"
+            icon={<BranchRequestRegular />}
+          />
           <ToolbarButton icon={<BranchRegular />} />
           <ToolbarButton icon={<CubeRegular />} />
         </Toolbar>
@@ -101,7 +120,10 @@ const Content: React.FC<ContentProps> = ({
           <ToolbarButton icon={<Search />} />
           <Menu>
             <MenuTrigger>
-              <ToolbarButton aria-label="More" icon={<MoreHorizontalRegular />} />
+              <ToolbarButton
+                aria-label="More"
+                icon={<MoreHorizontalRegular />}
+              />
             </MenuTrigger>
             <MenuPopover>
               <MenuList>
@@ -115,7 +137,9 @@ const Content: React.FC<ContentProps> = ({
           <ToolbarDivider />
           <Tooltip content={`${commandKey} + Shift + >`} relationship="label">
             <ToolbarButton
-              icon={isRightPanelOpen ? <PanelRightContract /> : <PanelRightExpand />}
+              icon={
+                isRightPanelOpen ? <PanelRightContract /> : <PanelRightExpand />
+              }
               onClick={toggleRightPanel}
               appearance="subtle"
             />
@@ -123,7 +147,9 @@ const Content: React.FC<ContentProps> = ({
         </Toolbar>
       </div>
 
-      <div className="content">{/* Place content here */}</div>
+      <div className="content">
+      <ReactMarkdown>{markdownFile}</ReactMarkdown>;
+      </div>
     </div>
   );
 };
