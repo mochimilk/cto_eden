@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React from "react";
 import {
   Button,
   Subtitle2,
@@ -14,37 +14,20 @@ import {
   Tab,
   TabList,
 } from "@fluentui/react-components";
-import {
-  ArrowExitRegular,
-  PersonRegular,
-  PersonFeedbackRegular,
-  ArrowExitFilled,
-  PersonFilled,
-  PersonFeedbackFilled,
-  LeafOneRegular,
-  LeafOneFilled,
-  FlowFilled,
-  FlowRegular,
-  BeakerFilled,
-  BeakerRegular,
-  WeatherSunnyFilled,
-  WeatherSunnyRegular,
-  WeatherMoonFilled,
-  WeatherMoonRegular,
-  bundleIcon,
-  ShareRegular,
-} from "@fluentui/react-icons";
 import "./css/Header.css";
 import MsftLogo from "../Imports/MsftColor.svg";
-
-const ArrowExit = bundleIcon(ArrowExitFilled, ArrowExitRegular);
-const Person = bundleIcon(PersonFilled, PersonRegular);
-const PersonFeedback = bundleIcon(PersonFeedbackFilled, PersonFeedbackRegular);
-const LeafOne = bundleIcon(LeafOneFilled, LeafOneRegular);
-const Flow = bundleIcon(FlowFilled, FlowRegular);
-const Beaker = bundleIcon(BeakerFilled, BeakerRegular);
-const WeatherSunny = bundleIcon(WeatherSunnyFilled, WeatherSunnyRegular);
-const WeatherMoon = bundleIcon(WeatherMoonFilled, WeatherMoonRegular);
+import { useHeaderHandlers } from "../appHandlers/useHeaderHandlers.tsx";
+import {
+  ArrowExit,
+  Person,
+  PersonFeedback,
+  LeafOne,
+  Flow,
+  Beaker,
+  WeatherSunny,
+  WeatherMoon,
+  Share,
+} from "../bundleIcons.tsx";
 
 interface HeaderProps {
   toggleTheme: () => void;
@@ -52,35 +35,12 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
-  const [shortcutLabel, setShortcutLabel] = useState("Ctrl+D");
-
-  const handleKeyPress = useCallback(
-    (event: KeyboardEvent) => {
-      // Detect Cmd+D (Mac) or Ctrl+D (Windows/Linux)
-      if ((event.metaKey || event.ctrlKey) && event.key === "d") {
-        toggleTheme();
-        event.preventDefault(); // Prevent browser default actions
-      }
-    },
-    [toggleTheme]
-  );
-
-  useEffect(() => {
-    // Set shortcut label based on the platform
-    const isMac = navigator.platform.toLowerCase().includes("mac");
-    setShortcutLabel(isMac ? "⌘+D" : "Ctrl+D");
-
-    window.addEventListener("keydown", handleKeyPress);
-    return () => {
-      window.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [handleKeyPress]);
+  const { shortcutLabel } = useHeaderHandlers({ toggleTheme, isDarkMode });
 
   return (
     <header>
       <div className="headerTitle">
         <Avatar
-
           image={{
             src: MsftLogo,
           }}
@@ -92,7 +52,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
           <span style={{ fontWeight: 400 }}> | CTO Eden</span>
         </Subtitle2>
         <Tag size="small" style={{ marginTop: 4 }}>
-          v.1.0.5
+          v.1.0.6
         </Tag>
       </div>
       <div className="headerNav">
@@ -137,7 +97,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
             </MenuList>
           </MenuPopover>
         </Menu>
-        <Button icon={<ShareRegular />} appearance="subtle"></Button>
+        <Button icon={<Share />} appearance="subtle"></Button>
       </div>
     </header>
   );

@@ -1,3 +1,10 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// DEV NOTES:                                                                                                                     //
+// 1) To populate your app, go to ./src/Modules/ and build inside the relevant container.                                         //
+// 2) All handlers live in ./src/appHandlers/userAppHandlers. You can use this file to adjust things like default panel width of  //
+//    left and right panels.                                                                                                      //
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 import * as React from "react";
 import Content from "./Modules/Content.tsx";
 import PanelRight from "./Modules/PanelRight.tsx";
@@ -23,7 +30,10 @@ const App: React.FC = () => {
   return (
     <div className="app-container">
       <div className="layout" style={{ display: "flex" }}>
-        {/* leftPanel */}
+        
+        {/*📌 Below is the setup for panelLeft.
+        ***To populate its contents, go to ./src/Modules/PanelLeft.tsx */}
+
         {isPanelOpen && (
           <div className="panelLeft" style={{ width: `${panelWidth}px` }}>
             <PanelLeft />
@@ -34,7 +44,9 @@ const App: React.FC = () => {
           </div>
         )}
 
-        {/* content */}
+        {/*📌 Below is the setup for Content.
+        ***To populate its contents, go to ./src/Modules/Content.tsx */}
+
         <div className="contentContainer" style={{ flexGrow: 1 }}>
           <Content
             isPanelOpen={isPanelOpen}
@@ -47,6 +59,9 @@ const App: React.FC = () => {
             handleMouseDownRight={handleMouseDownRight}
           />
         </div>
+        
+        {/*📌 Below is the setup for panelRight.
+        ***To populate its contents, go to ./src/Modules/PanelRight.tsx */}
 
         {/* right panel */}
         {isRightPanelOpen && (
@@ -60,17 +75,21 @@ const App: React.FC = () => {
         )}
       </div>
 
+      {/*📌 Below is the setup for hotkey-overlay.
+      ***You can edit it straight from here */}
+
       {/* hotkey overlay */}
       {showHotkeyOverlay && (
         <div className="hotkey-overlay">
           <div>
-            <Tag appearance="outline">{modifierKey}</Tag> + <Tag appearance="outline">shift</Tag> + <Tag appearance="outline">&lt;</Tag> : Left panel
+            <Tag appearance="outline">{modifierKey}</Tag> +{" "}
+            <Tag appearance="outline">shift</Tag> +{" "}
+            <Tag appearance="outline">←</Tag> : Left panel
           </div>
           <div>
-
-
-
-            <Tag appearance="outline">{modifierKey}</Tag> + <Tag appearance="outline">shift</Tag> + <Tag appearance="outline">&gt;</Tag> : Right panel
+            <Tag appearance="outline">{modifierKey}</Tag> +{" "}
+            <Tag appearance="outline">shift</Tag> +{" "}
+            <Tag appearance="outline">→</Tag> : Right panel
           </div>
         </div>
       )}
@@ -79,5 +98,3 @@ const App: React.FC = () => {
 };
 
 export default App;
-
-// All handlers live in ./src/appHandlers/userAppHandlers. You can use this file to adjust things like default panel width.

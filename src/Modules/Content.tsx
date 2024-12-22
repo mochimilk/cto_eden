@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import "../App.css";
 import {
   Body1Strong,
@@ -15,46 +15,18 @@ import {
 } from "@fluentui/react-components";
 import {
   MoreHorizontalRegular,
-  PanelLeftContractFilled,
-  PanelLeftContractRegular,
-  PanelLeftExpandFilled,
-  PanelLeftExpandRegular,
-  PanelRightContractFilled,
-  PanelRightContractRegular,
-  PanelRightExpandFilled,
-  PanelRightExpandRegular,
-  SearchRegular,
-  SearchFilled,
-  bundleIcon,
   BranchRequestRegular,
   CubeRegular,
   BranchRegular,
 } from "@fluentui/react-icons";
-import ReactMarkdown from "react-markdown";
-import markdownFile from "../Posts/GettingStarted.md";
-
-// Bundle icons for panelLeft
-const PanelLeftContract = bundleIcon(
-  PanelLeftContractFilled,
-  PanelLeftContractRegular
-);
-const PanelLeftExpand = bundleIcon(
-  PanelLeftExpandFilled,
-  PanelLeftExpandRegular
-);
-
-// Bundle icons for panelRight
-const PanelRightContract = bundleIcon(
-  PanelRightContractFilled,
-  PanelRightContractRegular
-);
-const PanelRightExpand = bundleIcon(
-  PanelRightExpandFilled,
-  PanelRightExpandRegular
-);
-
-// Bundle icons for Search
-const Search = bundleIcon(SearchFilled, SearchRegular);
+import {
+  PanelLeftContract,
+  PanelLeftExpand,
+  PanelRightContract,
+  PanelRightExpand,
+  Search,
+} from "../bundleIcons.tsx";
+import { useContentHandlers } from "../appHandlers/useContentHandlers.tsx";
 
 interface ContentProps {
   isPanelOpen: boolean;
@@ -69,32 +41,17 @@ const Content: React.FC<ContentProps> = ({
   isRightPanelOpen,
   toggleRightPanel,
 }) => {
-  const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
-  const commandKey = isMac ? "⌘" : "Ctrl";
-
-  // Add keyboard event listeners
-  React.useEffect(() => {
-    const handleKeydown = (event: KeyboardEvent) => {
-      if (event.metaKey && event.shiftKey && event.key === ",") {
-        event.preventDefault();
-        togglePanel();
-      } else if (event.metaKey && event.shiftKey && event.key === ".") {
-        event.preventDefault();
-        toggleRightPanel();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeydown);
-    return () => {
-      window.removeEventListener("keydown", handleKeydown);
-    };
-  }, [togglePanel, toggleRightPanel]);
+  const { commandKey } = useContentHandlers({ togglePanel, toggleRightPanel });
 
   return (
     <div className="contentContainer">
+
+      {/*📌 Below is the setup for the content toolbar.
+      ***You may remove this if your app doesn't need a toolbar. */}
+
       <div className="panelHeader">
         <div className="headerTitleGroup">
-          <Tooltip content={`${commandKey} + Shift + <`} relationship="label">
+          <Tooltip content={`${commandKey} + ArrowLeft`} relationship="label">
             <Button
               icon={isPanelOpen ? <PanelLeftContract /> : <PanelLeftExpand />}
               onClick={togglePanel}
@@ -135,7 +92,7 @@ const Content: React.FC<ContentProps> = ({
             </MenuPopover>
           </Menu>
           <ToolbarDivider />
-          <Tooltip content={`${commandKey} + Shift + >`} relationship="label">
+          <Tooltip content={`${commandKey} + ArrowRight`} relationship="label">
             <ToolbarButton
               icon={
                 isRightPanelOpen ? <PanelRightContract /> : <PanelRightExpand />
@@ -147,8 +104,14 @@ const Content: React.FC<ContentProps> = ({
         </Toolbar>
       </div>
 
+      {/*📌 Below is the setup for Content.
+      ***You can import just about anything into className"content" and it should show up in the content panel
+      ***Dependencies for .md files and react-markdown are preinstalled.
+      ***Don't forget call your import above!
+      ***/}
+
       <div className="content">
-      <ReactMarkdown>{markdownFile}</ReactMarkdown>;
+        {/* <ReactMarkdown>{markdownFile}</ReactMarkdown>; */}
       </div>
     </div>
   );
