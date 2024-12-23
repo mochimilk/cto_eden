@@ -16,7 +16,7 @@ import {
 } from "@fluentui/react-components";
 import "./css/Header.css";
 import MsftLogo from "../Imports/MsftColor.svg";
-import { useHeaderHandlers } from "../appHandlers/useHeaderHandlers.tsx";
+import { useHeaderHooks } from "../Hooks/useHeaderHooks.tsx";
 import {
   ArrowExit,
   Person,
@@ -35,7 +35,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
-  const { shortcutLabel } = useHeaderHandlers({ toggleTheme, isDarkMode });
+  const { shortcutLabel } = useHeaderHooks({ toggleTheme, isDarkMode });
 
   return (
     <header>
@@ -52,7 +52,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
           <span style={{ fontWeight: 400 }}> | CTO Eden</span>
         </Subtitle2>
         <Tag size="small" style={{ marginTop: 4 }}>
-          v.1.0.6
+          v.1.0.7
         </Tag>
       </div>
       <div className="headerNav">

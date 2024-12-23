@@ -26,7 +26,7 @@ import {
   PanelRightExpand,
   Search,
 } from "../bundleIcons.tsx";
-import { useContentHandlers } from "../appHandlers/useContentHandlers.tsx";
+import { useContentHooks } from "../Hooks/useContentHooks.tsx";
 
 interface ContentProps {
   isPanelOpen: boolean;
@@ -41,7 +41,7 @@ const Content: React.FC<ContentProps> = ({
   isRightPanelOpen,
   toggleRightPanel,
 }) => {
-  const { commandKey } = useContentHandlers({ togglePanel, toggleRightPanel });
+  const { commandKey } = useContentHooks({ togglePanel, toggleRightPanel });
 
   return (
     <div className="contentContainer">
@@ -51,7 +51,7 @@ const Content: React.FC<ContentProps> = ({
 
       <div className="panelHeader">
         <div className="headerTitleGroup">
-          <Tooltip content={`${commandKey} + ArrowLeft`} relationship="label">
+          <Tooltip content={`${commandKey} + ←`} relationship="label">
             <Button
               icon={isPanelOpen ? <PanelLeftContract /> : <PanelLeftExpand />}
               onClick={togglePanel}
@@ -92,7 +92,7 @@ const Content: React.FC<ContentProps> = ({
             </MenuPopover>
           </Menu>
           <ToolbarDivider />
-          <Tooltip content={`${commandKey} + ArrowRight`} relationship="label">
+          <Tooltip content={`${commandKey} + →`} relationship="label">
             <ToolbarButton
               icon={
                 isRightPanelOpen ? <PanelRightContract /> : <PanelRightExpand />

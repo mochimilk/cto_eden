@@ -1,18 +1,19 @@
 import { useEffect, useCallback, useState } from "react";
 
-interface UseHeaderHandlersProps {
+interface headerHooksProps {
   toggleTheme: () => void;
   isDarkMode: boolean;
 }
 
-export const useHeaderHandlers = ({ toggleTheme, isDarkMode }: UseHeaderHandlersProps) => {
+export const useHeaderHooks = ({ toggleTheme, isDarkMode }: headerHooksProps) => {
   const [shortcutLabel, setShortcutLabel] = useState("Ctrl+D");
 
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key === "d") {
         toggleTheme();
-        event.preventDefault(); // Prevent browser default actions
+        event.preventDefault(); // Prevent browser's default action (bookmarking)
+        event.stopPropagation(); // Stop further propagation (just in case)
       }
     },
     [toggleTheme]

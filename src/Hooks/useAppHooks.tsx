@@ -1,7 +1,7 @@
 // useAppHandlers.tsx
 import { useState, useEffect } from "react";
 
-export const useAppHandlers = () => {
+export const useAppHooks = () => {
   // State for Left Panel
   const [isPanelOpen, setIsPanelOpen] = useState(true);
   const [panelWidth, setPanelWidth] = useState(260);

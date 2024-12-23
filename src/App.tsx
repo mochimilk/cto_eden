@@ -6,81 +6,30 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 import * as React from "react";
-import Content from "./Modules/Content.tsx";
-import PanelRight from "./Modules/PanelRight.tsx";
-import PanelLeft from "./Modules/PanelLeft.tsx";
-import { Tag } from "@fluentui/react-components";
-import { useAppHandlers } from "./appHandlers/useAppHandlers.tsx";
+
+import { Body1, Tag } from "@fluentui/react-components";
+import { useAppHooks } from "./Hooks/useAppHooks.tsx";
 import "./App.css";
+import TriPanelLayout from "./Templates/TriPanelLayout.tsx";
 
 const App: React.FC = () => {
-  const {
-    isPanelOpen,
-    panelWidth,
-    togglePanel,
-    handleMouseDownLeft,
-    isRightPanelOpen,
-    rightPanelWidth,
-    toggleRightPanel,
-    handleMouseDownRight,
-    showHotkeyOverlay,
-    modifierKey,
-  } = useAppHandlers();
+  const { showHotkeyOverlay, modifierKey } = useAppHooks();
 
   return (
     <div className="app-container">
-      <div className="layout" style={{ display: "flex" }}>
-        
-        {/*📌 Below is the setup for panelLeft.
-        ***To populate its contents, go to ./src/Modules/PanelLeft.tsx */}
-
-        {isPanelOpen && (
-          <div className="panelLeft" style={{ width: `${panelWidth}px` }}>
-            <PanelLeft />
-            <div
-              className="resize-handle-left"
-              onMouseDown={handleMouseDownLeft}
-            />
-          </div>
-        )}
-
-        {/*📌 Below is the setup for Content.
-        ***To populate its contents, go to ./src/Modules/Content.tsx */}
-
-        <div className="contentContainer" style={{ flexGrow: 1 }}>
-          <Content
-            isPanelOpen={isPanelOpen}
-            togglePanel={togglePanel}
-            panelWidth={panelWidth} //Typescript error; revisit later
-            handleMouseDownLeft={handleMouseDownLeft}
-            isRightPanelOpen={isRightPanelOpen}
-            toggleRightPanel={toggleRightPanel}
-            rightPanelWidth={rightPanelWidth}
-            handleMouseDownRight={handleMouseDownRight}
-          />
-        </div>
-        
-        {/*📌 Below is the setup for panelRight.
-        ***To populate its contents, go to ./src/Modules/PanelRight.tsx */}
-
-        {/* right panel */}
-        {isRightPanelOpen && (
-          <div className="panelRight" style={{ width: `${rightPanelWidth}px` }}>
-            <div
-              className="resize-handle-right"
-              onMouseDown={handleMouseDownRight}
-            />
-            <PanelRight />
-          </div>
-        )}
-      </div>
+      <TriPanelLayout />
 
       {/*📌 Below is the setup for hotkey-overlay.
-      ***You can edit it straight from here */}
+       ***You can edit it straight from here */}
 
-      {/* hotkey overlay */}
       {showHotkeyOverlay && (
         <div className="hotkey-overlay">
+          <Body1>System</Body1>
+          <div>
+            <Tag appearance="outline">{modifierKey}</Tag> +{" "}
+            <Tag appearance="outline">D</Tag> : Theme
+          </div>
+          <Body1>View</Body1>
           <div>
             <Tag appearance="outline">{modifierKey}</Tag> +{" "}
             <Tag appearance="outline">shift</Tag> +{" "}
