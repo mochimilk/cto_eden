@@ -1,11 +1,10 @@
 import * as React from "react";
 import Content from "../Modules/Content.tsx";
 import PanelRight from "../Modules/PanelRight.tsx";
-import PanelLeft from "../Modules/PanelLeft.tsx";
 
 import { useAppHooks } from "../Hooks/useAppHooks.tsx";
 
-const TriPanelLayout: React.FC = () => {
+const RightPanelLayout: React.FC = () => {
   const {
     isPanelOpen,
     panelWidth,
@@ -18,26 +17,13 @@ const TriPanelLayout: React.FC = () => {
   } = useAppHooks();
   return (
     <div className="layout" style={{ display: "flex" }}>
-      {/*📌 Below is the setup for panelLeft.
-       ***To populate its contents, go to ./src/Modules/PanelLeft.tsx */}
-
-      {isPanelOpen && (
-        <div className="panelLeft" style={{ width: `${panelWidth}px` }}>
-          <PanelLeft />
-          <div
-            className="resize-handle-left"
-            onMouseDown={handleMouseDownLeft}
-          />
-        </div>
-      )}
-
       {/*📌 Below is the setup for Content.
        ***To populate its contents, go to ./src/Modules/Content.tsx */}
 
       <div className="contentContainer" style={{ flexGrow: 1 }}>
         <Content
-          isPanelOpen={isPanelOpen}
-          togglePanel={togglePanel} // Left toggle is active
+          isPanelOpen={false} // Left toggle hidden
+          togglePanel={undefined} // Pass undefined to hide left toggle
           isRightPanelOpen={isRightPanelOpen}
           toggleRightPanel={toggleRightPanel} // Right toggle is active
         />
@@ -59,4 +45,4 @@ const TriPanelLayout: React.FC = () => {
   );
 };
 
-export default TriPanelLayout;
+export default RightPanelLayout;

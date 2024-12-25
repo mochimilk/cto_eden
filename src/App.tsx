@@ -11,13 +11,15 @@ import { Body1, Tag } from "@fluentui/react-components";
 import { useAppHooks } from "./Hooks/useAppHooks.tsx";
 import "./App.css";
 import TriPanelLayout from "./Templates/TriPanelLayout.tsx";
+import LeftPanelLayout from "./Templates/LeftPanelLayout.tsx";
+import RightPanelLayout from "./Templates/RightPanelLayout.tsx";
 
 const App: React.FC = () => {
   const { showHotkeyOverlay, modifierKey } = useAppHooks();
 
   return (
     <div className="app-container">
-      <TriPanelLayout />
+      <RightPanelLayout />
 
       {/*📌 Below is the setup for hotkey-overlay.
        ***You can edit it straight from here */}

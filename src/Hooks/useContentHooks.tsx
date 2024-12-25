@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 
-interface contentHooksProps {
-  togglePanel: () => void;
-  toggleRightPanel: () => void;
+interface ContentHooksProps {
+  togglePanel?: () => void; // Optional for layouts without left panel
+  toggleRightPanel?: () => void; // Optional for layouts without right panel
 }
 
 export const useContentHooks = ({
   togglePanel,
   toggleRightPanel,
-}: contentHooksProps) => {
+}: ContentHooksProps) => {
   const isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
   const commandKey = isMac ? "⌘ + Shift" : "Ctrl + Shift";
 
@@ -16,10 +16,12 @@ export const useContentHooks = ({
     const handleKeydown = (event: KeyboardEvent) => {
       // Check for Ctrl (or Command on Mac) + Shift + Arrow Keys
       if ((event.ctrlKey || (isMac && event.metaKey)) && event.shiftKey) {
-        if (event.key === "ArrowLeft") {
+        if (event.key === "ArrowLeft" && togglePanel) {
+          // Call togglePanel only if it exists
           event.preventDefault(); // Prevent browser's default action
           togglePanel();
-        } else if (event.key === "ArrowRight") {
+        } else if (event.key === "ArrowRight" && toggleRightPanel) {
+          // Call toggleRightPanel only if it exists
           event.preventDefault(); // Prevent browser's default action
           toggleRightPanel();
         }

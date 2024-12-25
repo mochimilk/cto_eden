@@ -30,9 +30,9 @@ import { useContentHooks } from "../Hooks/useContentHooks.tsx";
 
 interface ContentProps {
   isPanelOpen: boolean;
-  togglePanel: () => void;
+  togglePanel?: () => void; // Optional to conditionally render left toggle
   isRightPanelOpen: boolean;
-  toggleRightPanel: () => void;
+  toggleRightPanel?: () => void; // Optional to conditionally render right toggle
 }
 
 const Content: React.FC<ContentProps> = ({
@@ -51,13 +51,15 @@ const Content: React.FC<ContentProps> = ({
 
       <div className="panelHeader">
         <div className="headerTitleGroup">
-          <Tooltip content={`${commandKey} + ←`} relationship="label">
-            <Button
-              icon={isPanelOpen ? <PanelLeftContract /> : <PanelLeftExpand />}
-              onClick={togglePanel}
-              appearance="subtle"
-            />
-          </Tooltip>
+          {togglePanel && ( // Hide left toggle if togglePanel is not provided
+            <Tooltip content={`${commandKey} + ←`} relationship="label">
+              <Button
+                icon={isPanelOpen ? <PanelLeftContract /> : <PanelLeftExpand />}
+                onClick={togglePanel}
+                appearance="subtle"
+              />
+            </Tooltip>
+          )}
           <Body1Strong style={{ color: "var(--colorNeutralForeground2)" }}>
             Content
           </Body1Strong>
@@ -92,15 +94,17 @@ const Content: React.FC<ContentProps> = ({
             </MenuPopover>
           </Menu>
           <ToolbarDivider />
-          <Tooltip content={`${commandKey} + →`} relationship="label">
-            <ToolbarButton
-              icon={
-                isRightPanelOpen ? <PanelRightContract /> : <PanelRightExpand />
-              }
-              onClick={toggleRightPanel}
-              appearance="subtle"
-            />
-          </Tooltip>
+          {toggleRightPanel && ( // Hide right toggle if toggleRightPanel is not provided
+            <Tooltip content={`${commandKey} + →`} relationship="label">
+              <ToolbarButton
+                icon={
+                  isRightPanelOpen ? <PanelRightContract /> : <PanelRightExpand />
+                }
+                onClick={toggleRightPanel}
+                appearance="subtle"
+              />
+            </Tooltip>
+          )}
         </Toolbar>
       </div>
 

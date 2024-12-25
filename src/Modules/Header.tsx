@@ -52,7 +52,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
           <span style={{ fontWeight: 400 }}> | CTO Eden</span>
         </Subtitle2>
         <Tag size="small" style={{ marginTop: 4 }}>
-          v.1.0.7
+          v.1.0.8
         </Tag>
       </div>
       <div className="headerNav">
