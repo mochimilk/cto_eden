@@ -40,7 +40,7 @@ const HeaderPage: React.FC<HeaderPageProps> = ({ toggleTheme, isDarkMode }) => {
       avatarSrc={MsftLogo} // Profile icon for businesses.
       title="Microsoft"
       subtitle="CTO Systems"
-      badge="Beta"
+      badge="Alpha"
     >
       {/* Navigation Section
       Placeholder. You can configure it to your needs or omit entirely */}
