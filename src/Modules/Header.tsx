@@ -36,25 +36,6 @@ const HeaderPage: React.FC<HeaderPageProps> = ({ toggleTheme, isDarkMode }) => {
   const { shortcutLabel } = useHeaderHooks({ toggleTheme, isDarkMode });
 
   return (
-<<<<<<< Updated upstream
-    <header>
-      <div className="headerTitle">
-        <Avatar
-          image={{
-            src: MsftLogo,
-          }}
-          shape="square"
-          aria-label="App"
-        />
-        <Subtitle2 style={{ whiteSpace: "nowrap" }}>
-          Microsoft
-          <span style={{ fontWeight: 400 }}> | CTO Eden</span>
-        </Subtitle2>
-        <Tag size="small" style={{ marginTop: 4 }}>
-          v.1.0.8
-        </Tag>
-      </div>
-=======
     <Header
       avatarSrc={MsftLogo} // Profile icon for businesses.
       title="Microsoft"
@@ -63,7 +44,6 @@ const HeaderPage: React.FC<HeaderPageProps> = ({ toggleTheme, isDarkMode }) => {
     >
       {/* Navigation Section
       Placeholder. You can configure it to your needs or omit entirely */}
->>>>>>> Stashed changes
       <div className="headerNav">
         <TabList size="small">
           <Tab icon={<LeafOne />} value="tab1">

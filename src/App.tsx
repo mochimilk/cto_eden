@@ -18,15 +18,11 @@ const App: React.FC<AppProps> = ({ isDarkMode, toggleTheme }) => {
 
   return (
     <div className="app-container">
-<<<<<<< Updated upstream
-      <RightPanelLayout />
-=======
       {/* Move Header into App */}
       <Header toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
 
       {/* Main Layout */}
       <TriPanelLayout />
->>>>>>> Stashed changes
 
       {/* Hotkey Overlay */}
       {showHotkeyOverlay && (
