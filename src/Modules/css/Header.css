@@ -7,6 +7,7 @@ header {
   background-color: var(--colorNeutralBackgroundAlpha);
   max-height: 64px;
   box-sizing: border-box;
+  border-bottom: 1px solid var(--colorNeutralStrokeAlpha);
 }
 
 .headerTitle {
@@ -14,6 +15,10 @@ header {
   flex-basis: auto;
   align-items: center;
   gap: 8px;
+}
+
+.headerTitleText{
+  display:initial;
 }
 
 .headerNav {
@@ -28,7 +33,6 @@ header {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-direction: row-reverse;
 }
 
 .clickable-avatar {
@@ -38,4 +42,12 @@ header {
 
 .clickable-avatar:hover {
   box-shadow: 0 0 0 2px var(--colorNeutralStrokeAlpha2); /* Outer border effect without resizing */
+}
+
+
+@media only screen and (max-width: 1200px) {
+  .headerTitleText{
+    display:none;
+  }
+  
 }

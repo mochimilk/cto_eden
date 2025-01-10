@@ -1,29 +1,34 @@
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// DEV NOTES:                                                                                                                     //
-// 1) To populate your app, go to ./src/Modules/ and build inside the relevant container.                                         //
-// 2) All handlers live in ./src/appHandlers/userAppHandlers. You can use this file to adjust things like default panel width of  //
-//    left and right panels.                                                                                                      //
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 import * as React from "react";
-
 import { Body1, Tag } from "@fluentui/react-components";
 import { useAppHooks } from "./Hooks/useAppHooks.tsx";
+import Header from "./Modules/Header.tsx"; // Import Header
 import "./App.css";
+import "./Modules/css/Panels.css";
 import TriPanelLayout from "./Templates/TriPanelLayout.tsx";
 import LeftPanelLayout from "./Templates/LeftPanelLayout.tsx";
 import RightPanelLayout from "./Templates/RightPanelLayout.tsx";
 
-const App: React.FC = () => {
+type AppProps = {
+  isDarkMode: boolean;
+  toggleTheme: () => void;
+};
+
+const App: React.FC<AppProps> = ({ isDarkMode, toggleTheme }) => {
   const { showHotkeyOverlay, modifierKey } = useAppHooks();
 
   return (
     <div className="app-container">
+<<<<<<< Updated upstream
       <RightPanelLayout />
+=======
+      {/* Move Header into App */}
+      <Header toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
 
-      {/*📌 Below is the setup for hotkey-overlay.
-       ***You can edit it straight from here */}
+      {/* Main Layout */}
+      <TriPanelLayout />
+>>>>>>> Stashed changes
 
+      {/* Hotkey Overlay */}
       {showHotkeyOverlay && (
         <div className="hotkey-overlay">
           <Body1>System</Body1>

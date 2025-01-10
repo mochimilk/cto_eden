@@ -1,43 +1,42 @@
 import React from "react";
+import { Header, useHeaderHooks } from "../Hooks/useHeaderHooks.tsx";
 import {
-  Button,
-  Subtitle2,
-  Avatar,
+  TabList,
+  Tab,
   Menu,
   MenuTrigger,
-  MenuList,
-  MenuItem,
   MenuPopover,
-  MenuDivider,
+  MenuList,
   MenuGroup,
-  Tag,
-  Tab,
-  TabList,
+  MenuItem,
+  MenuDivider,
+  Avatar,
+  Button,
 } from "@fluentui/react-components";
-import "./css/Header.css";
-import MsftLogo from "../Imports/MsftColor.svg";
-import { useHeaderHooks } from "../Hooks/useHeaderHooks.tsx";
 import {
-  ArrowExit,
-  Person,
-  PersonFeedback,
   LeafOne,
-  Flow,
   Beaker,
+  Flow,
   WeatherSunny,
   WeatherMoon,
+  Person,
+  PersonFeedback,
+  ArrowExit,
   Share,
 } from "../bundleIcons.tsx";
+import MsftLogo from "../Imports/MsftColor.svg";
+import "./css/Header.css";
 
-interface HeaderProps {
+interface HeaderPageProps {
   toggleTheme: () => void;
   isDarkMode: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
+const HeaderPage: React.FC<HeaderPageProps> = ({ toggleTheme, isDarkMode }) => {
   const { shortcutLabel } = useHeaderHooks({ toggleTheme, isDarkMode });
 
   return (
+<<<<<<< Updated upstream
     <header>
       <div className="headerTitle">
         <Avatar
@@ -55,6 +54,16 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
           v.1.0.8
         </Tag>
       </div>
+=======
+    <Header
+      avatarSrc={MsftLogo} // Profile icon for businesses.
+      title="Microsoft"
+      subtitle="CTO Systems"
+      badge="Beta"
+    >
+      {/* Navigation Section
+      Placeholder. You can configure it to your needs or omit entirely */}
+>>>>>>> Stashed changes
       <div className="headerNav">
         <TabList size="small">
           <Tab icon={<LeafOne />} value="tab1">
@@ -68,8 +77,11 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
           </Tab>
         </TabList>
       </div>
+
+      {/* Tools Section */}
       <div className="headerTools">
-        <Menu hasIcons positioning={{ autoSize: true }}>
+        <Menu 
+        hasIcons positioning={{ autoSize: true }}>
           <MenuTrigger disableButtonEnhancement>
             <Avatar
               color="colorful"
@@ -79,7 +91,8 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
               className="clickable-avatar"
             />
           </MenuTrigger>
-          <MenuPopover>
+          <MenuPopover
+          style={{ minWidth: '192px'}}>
             <MenuList>
               <MenuGroup>
                 <MenuItem icon={<Person />}>Account</MenuItem>
@@ -97,10 +110,10 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, isDarkMode }) => {
             </MenuList>
           </MenuPopover>
         </Menu>
-        <Button icon={<Share />} appearance="subtle"></Button>
+        <Button icon={<Share />} appearance="subtle" />
       </div>
-    </header>
+    </Header>
   );
 };
 
-export default Header;
+export default HeaderPage;

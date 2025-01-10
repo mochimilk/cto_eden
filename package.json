@@ -17,7 +17,6 @@
     "test": "react-app-rewired test",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
- 
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -47,6 +46,7 @@
     "globals": "^15.14.0",
     "raw-loader": "^4.0.2",
     "react-app-rewired": "^2.2.1",
+    "typescript": "^5.7.3",
     "typescript-eslint": "^8.18.1"
   }
 }
